@@ -1,0 +1,24 @@
+{
+  "name": "comps-loader",
+  "version": "1.0.0",
+  "description": "Comps template loader for webpack. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/switer/comps-loader.git"
+  },
+  "keywords": [
+    "comps",
+    "loader",
+    "webpack"
+  ],
+  "author": "switer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/switer/comps-loader/issues"
+  },
+  "homepage": "https://github.com/switer/comps-loader#readme"
+}
