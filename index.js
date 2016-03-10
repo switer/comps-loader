@@ -17,7 +17,9 @@ comps.componentLoader(function (name) {
 })
 function loader(source) {
     var query = {}
-    if (this.resourceQuery) {
+    if (this.query) {
+        query = qs.parse(this.query.replace(/^\?/, ''))
+    } else if (this.resourceQuery) {
         query = qs.parse(this.resourceQuery.replace(/^\?/, ''))
     }
     var result = comps({
@@ -29,5 +31,15 @@ function loader(source) {
 }
 loader.resolve = function (fn) {
     resolver = fn
+}
+loader.WebpackQueryPlugin = function (webpack, seperator, test) {
+    seperator = seperator || '??'
+    test = test || /.*/
+    return new webpack.NormalModuleReplacementPlugin(test, function (f) {
+        if (!~f.request.indexOf(seperator)) return
+        var parts = f.request.split(seperator)
+        f.request = '!!comps-loader?' + parts[1] + '!' + parts[0]
+        return f
+    })
 }
 module.exports = loader

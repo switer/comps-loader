@@ -22,3 +22,13 @@ compsLoader.resolve(function (name) {
     return path.join('/path/to/components', name, name, '.tpl')
 })
 ```
+
+
+## Plugins
+
+#### WebpackQueryPlugin(webpack, seperator, test)
+
+    Syntax sugar for webpack-loader with query. It replace `require(./a.tpl??pagelet=b)` with `require(comps?pagelet=b!./a.tpl)`
+
+    **??** is the **seperator**`<String>` param, and the **test**`<RegExp>` param is using to filtrate unmatch files.
+
