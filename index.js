@@ -4,18 +4,21 @@ var comps = require('comps')
 var fs = require('fs')
 var path = require('path')
 var qs = require('querystring')
-function noop () {}
-
 var resolver = noop
+var _comps = comps
+var _isConf = false
 
-comps.componentLoader(function (name) {
-    var request = resolver(name) || path.join(process.cwd(), 'c', name, name, '.tpl')
-    return {
-        request: request,
-        content: fs.readFileSync(request, 'utf-8')
-    }
-})
 function loader(source) {
+    if (!_isConf) {
+        _isConf = true
+        _comps.componentLoader(function (name) {
+            var request = resolver(name) || path.join(process.cwd(), 'c', name, name, '.tpl')
+            return {
+                request: request,
+                content: fs.readFileSync(request, 'utf-8')
+            }
+        })
+    }
     var query = {}
     if (this.query) {
         query = qs.parse(this.query.replace(/^\?/, ''))
@@ -29,8 +32,13 @@ function loader(source) {
     })
     return 'module.exports = ' + JSON.stringify(result)
 }
+loader.use = function (inst) {
+    _comps = inst
+    return this
+}
 loader.resolve = function (fn) {
     resolver = fn
+    return this
 }
 loader.WebpackQueryPlugin = function (webpack, seperator, test) {
     seperator = seperator || '??'
@@ -42,4 +50,5 @@ loader.WebpackQueryPlugin = function (webpack, seperator, test) {
         return f
     })
 }
+function noop () {}
 module.exports = loader
