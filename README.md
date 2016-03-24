@@ -1,4 +1,6 @@
 # comps-loader
+[![npm version](https://badge.fury.io/js/comps-loader.svg)](https://badge.fury.io/js/comps-loader)
+
 Comps template loader for webpack.
 
 # Usage
@@ -42,7 +44,7 @@ Define resolve method use to get component's file path by name, which receiving 
 
 #### WebpackQueryPlugin(webpack, seperator, test)
 
-    Syntax sugar for webpack-loader with query. It replace `require(./a.tpl??pagelet=b)` with `require(comps?pagelet=b!./a.tpl)`
+Syntax sugar for webpack-loader with query. It replace `require(./a.tpl??pagelet=b)` with `require(comps?pagelet=b!./a.tpl)`
 
-    **??** is the **seperator**`<String>` param, and the **test**`<RegExp>` param is using to filtrate unmatch files.
+**??** is the **seperator**`<String>` param, and the **test**`<RegExp>` param is using to filtrate unmatch files.
 
