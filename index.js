@@ -25,7 +25,7 @@ function loader(source) {
     } else if (this.resourceQuery) {
         query = qs.parse(this.resourceQuery.replace(/^\?/, ''))
     }
-    var result = comps({
+    var result = _comps({
         context: this.context,
         template: source,
         pagelet: query.pagelet
