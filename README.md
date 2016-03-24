@@ -24,6 +24,20 @@ compsLoader.resolve(function (name) {
 ```
 
 
+## API
+
+#### use(comps)
+
+- **Param**: comps<Function> Comps module.
+
+Custom **Comps** module instance, if has more than one Comps instance, default `require("comps")`.
+
+#### resolve(resolver)
+
+- **Param**: resolver<Function>
+
+Define resolve method use to get component's file path by name, which receiving a "name" argument.
+
 ## Plugins
 
 #### WebpackQueryPlugin(webpack, seperator, test)
