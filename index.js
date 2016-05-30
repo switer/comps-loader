@@ -12,7 +12,7 @@ function loader(source) {
     if (!_isConf) {
         _isConf = true
         _comps.componentLoader(function (name) {
-            var request = resolver(name) || path.join(process.cwd(), 'c', name, name, '.tpl')
+            var request = resolver(name) || path.join(process.cwd(), 'c', name, name + '.tpl')
             return {
                 request: request,
                 content: fs.readFileSync(request, 'utf-8')
