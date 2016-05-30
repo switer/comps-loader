@@ -1,6 +1,6 @@
 {
   "name": "comps-loader",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Comps template loader for webpack. ",
   "main": "index.js",
   "scripts": {
