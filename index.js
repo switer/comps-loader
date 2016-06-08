@@ -40,13 +40,14 @@ loader.resolve = function (fn) {
     resolver = fn
     return this
 }
-loader.WebpackQueryPlugin = function (webpack, seperator, test) {
+loader.WebpackQueryPlugin = function (webpack, seperator, test, loader) {
     seperator = seperator || '??'
     test = test || /.*/
+    loader = loader || 'comps-loader'
     return new webpack.NormalModuleReplacementPlugin(test, function (f) {
         if (!~f.request.indexOf(seperator)) return
         var parts = f.request.split(seperator)
-        f.request = '!!comps-loader?' + parts[1] + '!' + parts[0]
+        f.request = '!!' + loader + '?' + parts[1] + '!' + parts[0]
         return f
     })
 }

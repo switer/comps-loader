@@ -42,9 +42,9 @@ Define resolve method use to get component's file path by name, which receiving 
 
 ## Plugins
 
-#### WebpackQueryPlugin(webpack, seperator, test)
+#### WebpackQueryPlugin(webpack, seperator[, test, loader])
 
 Syntax sugar for webpack-loader with query. It replace `require(./a.tpl??pagelet=b)` with `require(comps?pagelet=b!./a.tpl)`
 
-**??** is the **seperator**`<String>` param, and the **test**`<RegExp>` param is using to filtrate unmatch files.
+**??** is the **seperator**`<String>` param, and the **test**`<RegExp>` param is using to filtrate unmatch files. **loader** for set custom loader, default "`comps-loader`"
 
