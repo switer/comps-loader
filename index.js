@@ -34,6 +34,7 @@ function loader(source) {
 }
 loader.use = function (inst) {
     _comps = inst
+    _isConf = true
     return this
 }
 loader.resolve = function (fn) {
